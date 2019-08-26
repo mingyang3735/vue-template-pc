@@ -10,17 +10,17 @@ export default new Vuex.Store({
   },
   mutations: {
     UPDATE_USERINFO (state, payload) {
+      if (payload) {
+        sessionStorage.setItem('userInfo', JSON.stringify(payload))
+      } else {
+        sessionStorage.removeItem('userInfo')
+      }
       state.userInfo = payload
-      sessionStorage.setItem('userInfo', JSON.stringify(payload))
     }
   },
   actions: {
-    login ({ commit }, payload) {
-      request.post('/login', payload).then(res => {
-        if (res.data) {
-          commit('UPDATE_USERINFO', res.data)
-        }
-      })
+    setUserInfo ({ commit }, payload) {
+      commit('UPDATE_USERINFO', payload)
     }
   },
   getters: {

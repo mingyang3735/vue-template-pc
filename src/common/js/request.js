@@ -2,6 +2,7 @@ import axios from 'axios'
 import { Message } from 'element-ui'
 import { sessionStorage } from './storage'
 import router from '../../router'
+import store from '../../vuex/store'
 
 let request = axios.create({
   baseURL: '/',
@@ -25,7 +26,7 @@ request.interceptors.request.use(config => {
 })
 request.interceptors.response.use(data => {
   if (+data.data.status === 201) {
-    sessionStorage.removeItem('userInfo')
+    store.dispatch('setUserInfo', null)
     router.push('/login')
   } else if (+data.data.status !== 1) {
     Message({
