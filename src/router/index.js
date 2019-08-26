@@ -18,7 +18,7 @@ export default new Router({
           name: 'home',
           component: Home,
           meta: {
-            isLogin: true
+            title: '后台首页'
           }
         }
       ]

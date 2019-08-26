@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <el-button>home</el-button>
+    <div class="pager-title">{{$route.meta.title}}</div>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: 'home',
   mounted () {
-    this.$http.post('/post')
+    // this.$http.post('/post')
   }
 }
 </script>
